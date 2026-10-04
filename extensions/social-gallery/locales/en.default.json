@@ -1,0 +1,17 @@
+{
+  "social_gallery": {
+    "eyebrow": "From our community",
+    "heading": "Made, loved & shared by you",
+    "loading": "Loading community posts…",
+    "empty": "Published customer content will appear here after you connect your accounts and sync.",
+    "error": "The gallery is temporarily unavailable. Please try again later.",
+    "original": "View original",
+    "photo": "Customer photo",
+    "demo": "Sample content",
+    "previous": "Previous posts",
+    "next": "Next posts",
+    "carousel": "carousel",
+    "position": "{{ first }}–{{ last }} of {{ total }}",
+    "position_single": "{{ first }} of {{ total }}"
+  }
+}

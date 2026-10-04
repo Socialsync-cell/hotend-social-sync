@@ -1,0 +1,26 @@
+client_id = "REPLACE_WITH_SHOPIFY_CLIENT_ID"
+name = "Hotend Social Sync"
+application_url = "https://social-sync-t82i.onrender.com"
+embedded = false
+
+[access_scopes]
+scopes = "write_app_proxy"
+
+[auth]
+redirect_urls = [ "https://social-sync-t82i.onrender.com/auth/shopify/callback" ]
+
+[app_proxy]
+url = "/proxy"
+prefix = "apps"
+subpath = "social-sync"
+
+[webhooks]
+api_version = "2026-07"
+
+[[webhooks.subscriptions]]
+topics = [ "app/uninstalled" ]
+uri = "/webhooks/uninstalled"
+
+[[webhooks.subscriptions]]
+compliance_topics = [ "customers/data_request", "customers/redact", "shop/redact" ]
+uri = "/webhooks/privacy"

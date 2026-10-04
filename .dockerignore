@@ -1,0 +1,9 @@
+*
+!package.json
+!src/
+!src/**
+!public/
+!public/**
+!extensions/
+!extensions/social-gallery/
+!extensions/social-gallery/**

@@ -1,0 +1,13 @@
+{
+  "social_gallery": {
+    "name": "Social gallery",
+    "heading": "Heading",
+    "columns": "Cards visible on desktop",
+    "limit": "Maximum items",
+    "platform": "Platform",
+    "all": "Instagram and Facebook",
+    "product_only": "Match current product",
+    "proxy_path": "Gallery proxy path",
+    "proxy_info": "Keep the default unless you have customized this app’s proxy URL in Shopify."
+  }
+}

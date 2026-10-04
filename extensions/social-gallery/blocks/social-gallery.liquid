@@ -1,0 +1,53 @@
+{% assign gallery_heading = block.settings.heading | default: '' %}
+<social-gallery
+  class="sg"
+  data-endpoint="{{ block.settings.proxy_path | escape }}"
+  data-columns="{{ block.settings.columns }}"
+  data-limit="{{ block.settings.limit }}"
+  data-platform="{{ block.settings.platform }}"
+  data-product="{% if block.settings.product_only and product %}{{ product.handle | escape }}{% endif %}"
+  data-design-mode="{{ request.design_mode }}"
+  data-empty="{{ 'social_gallery.empty' | t | escape }}"
+  data-error="{{ 'social_gallery.error' | t | escape }}"
+  data-original="{{ 'social_gallery.original' | t | escape }}"
+  data-photo="{{ 'social_gallery.photo' | t | escape }}"
+  data-demo="{{ 'social_gallery.demo' | t | escape }}"
+  data-previous="{{ 'social_gallery.previous' | t | escape }}"
+  data-next="{{ 'social_gallery.next' | t | escape }}"
+  data-carousel="{{ 'social_gallery.carousel' | t | escape }}"
+  data-position="{{ 'social_gallery.position' | t: first: '__FIRST__', last: '__LAST__', total: '__TOTAL__' | escape }}"
+  data-position-single="{{ 'social_gallery.position_single' | t: first: '__FIRST__', total: '__TOTAL__' | escape }}"
+  {{ block.shopify_attributes }}
+>
+  <header class="sg-heading">
+    <p>{{ 'social_gallery.eyebrow' | t }}</p>
+    <h2 id="SocialGalleryHeading-{{ block.id }}">{% if gallery_heading != blank %}{{ gallery_heading | escape }}{% else %}{{ 'social_gallery.heading' | t }}{% endif %}</h2>
+  </header>
+  <p class="sg-message" role="status">{{ 'social_gallery.loading' | t }}</p>
+  <div class="sg-grid" id="SocialGalleryTrack-{{ block.id }}" role="region" aria-labelledby="SocialGalleryHeading-{{ block.id }}" aria-roledescription="{{ 'social_gallery.carousel' | t }}" tabindex="0"></div>
+  <div class="sg-controls" hidden>
+    <button class="sg-arrow sg-previous" type="button" aria-label="{{ 'social_gallery.previous' | t | escape }}" aria-controls="SocialGalleryTrack-{{ block.id }}"><span aria-hidden="true">←</span></button>
+    <p class="sg-position" role="status" aria-live="polite" aria-atomic="true"></p>
+    <button class="sg-arrow sg-next" type="button" aria-label="{{ 'social_gallery.next' | t | escape }}" aria-controls="SocialGalleryTrack-{{ block.id }}"><span aria-hidden="true">→</span></button>
+  </div>
+</social-gallery>
+{% schema %}
+{
+  "name": "t:social_gallery.name",
+  "target": "section",
+  "stylesheet": "gallery.css",
+  "javascript": "gallery.js",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "t:social_gallery.heading" },
+    { "type": "range", "id": "columns", "label": "t:social_gallery.columns", "min": 1, "max": 4, "step": 1, "default": 3 },
+    { "type": "range", "id": "limit", "label": "t:social_gallery.limit", "min": 3, "max": 24, "step": 3, "default": 12 },
+    { "type": "select", "id": "platform", "label": "t:social_gallery.platform", "default": "all", "options": [
+      { "value": "all", "label": "t:social_gallery.all" },
+      { "value": "instagram", "label": "Instagram" },
+      { "value": "facebook", "label": "Facebook" }
+    ] },
+    { "type": "checkbox", "id": "product_only", "label": "t:social_gallery.product_only", "default": false },
+    { "type": "text", "id": "proxy_path", "label": "t:social_gallery.proxy_path", "default": "/apps/social-sync/feed", "info": "t:social_gallery.proxy_info" }
+  ]
+}
+{% endschema %}

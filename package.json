@@ -1,0 +1,15 @@
+{
+  "name": "hotend-social-sync",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "demo": "node src/demo.js",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check src/config.js && node --check src/db.js && node --check src/meta.js && node --check src/security.js && node --check src/sync.js && node --check src/server.js && node --check public/app.js && node --check public/preview.js && node --check extensions/social-gallery/assets/gallery.js"
+  }
+}
